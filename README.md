@@ -1,4 +1,4 @@
-# promise-parallel
+# promise-concurrency
 
 [![Build Status](https://travis-ci.org/springuper/promise-parallel.svg?branch=master)](https://travis-ci.org/springuper/promise-parallel)
 
@@ -7,7 +7,7 @@ run promises in parallel with a concurrency limit.
 ## Installation
 
 ```
-npm install promise-parallel
+npm install promise-concurrency
 ```
 
 ## Example
@@ -24,7 +24,7 @@ var promiseGenerators = [5, 4, 3, 2, 1].map(function (item) {
         });
     };
 });
-promiseParallel(promiseGenerators, 2).then(function (value) {
+promiseConcurrency(promiseGenerators, 2).then(function (value) {
     console.log(value); // => [5, 4, 3, 2, 1]
 });
 ```

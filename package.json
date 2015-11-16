@@ -1,5 +1,5 @@
 {
-  "name": "promise-parallel",
+  "name": "promise-concurrency",
   "version": "0.1.0",
   "description": "run promises in parallel with a concurrency limit",
   "main": "lib/parallel.js",
