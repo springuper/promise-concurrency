@@ -15,7 +15,7 @@ npm install promise-concurrency
 The most common use case:
 
 ```js
-var promiseGenerators = [5, 4, 3, 2, 1].map(function (item) {
+var promiseFactories = [5, 4, 3, 2, 1].map(function (item) {
     return function () {
         return new Promise(function (resolve, reject) {
             setTimeout(function () {
@@ -24,7 +24,7 @@ var promiseGenerators = [5, 4, 3, 2, 1].map(function (item) {
         });
     };
 });
-promiseConcurrency(promiseGenerators, 2).then(function (value) {
+promiseConcurrency(promiseFactories, 2).then(function (value) {
     console.log(value); // => [5, 4, 3, 2, 1]
 });
 ```
