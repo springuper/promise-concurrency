@@ -26,4 +26,12 @@ describe('PromiseParallel', function () {
             done();
         }).catch(done);
     });
+
+    it('should reject when promiseFactories is empty', function (done) {
+        var promiseFactories = [];
+        promiseParallel(promiseFactories, 2).catch(function (reason) {
+            assert.equal(reason.message, 'promise list is empty.');
+            done();
+        });
+    });
 });
