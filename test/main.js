@@ -98,4 +98,30 @@ describe('PromiseParallel', function () {
             }, 500);
         }).catch(done);
     });
+
+    it('should reject when all in progress promises complete', function (done) {
+        var sequence = [];
+        var LIMIT = 2;
+        var promiseFactories = [1, 2, 3, 4, 5].map(function (item) {
+            return function () {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(function () {
+                        if (item === 3) {
+                            reject('Wrong value.');
+                        } else {
+                            sequence.push(item);
+                            resolve(item);
+                        }
+                    }, 100);
+                });
+            };
+        });
+        promiseParallel(promiseFactories, LIMIT).then(function () {
+            throw new Error('Unexpected branch.');
+        }, function (reason) {
+            assert.deepEqual(reason, 'Wrong value.');
+            assert.deepEqual(sequence, [1, 2, 4]);
+            done();
+        }).catch(done);
+    });
 });
