@@ -4,27 +4,27 @@
   "description": "run promises in parallel with a concurrency limit",
   "main": "lib/concurrency.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/*"
+    "test": "nyc mocha test/",
+    "lint": "eslint lib/ test/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/springuper/promise-parallel.git"
+    "url": "git+https://github.com/springuper/promise-concurrency.git"
   },
   "keywords": [
     "promise",
-    "parallel"
+    "concurrency"
   ],
   "author": "springuper@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/springuper/promise-parallel/issues"
+    "url": "https://github.com/springuper/promise-concurrency/issues"
   },
-  "homepage": "https://github.com/springuper/promise-parallel#readme",
+  "homepage": "https://github.com/springuper/promise-concurrency#readme",
   "devDependencies": {
-    "jshint": "^2.8.0",
-    "mocha": "^2.3.3"
+    "eslint": "^3.19.0",
+    "mocha": "^2.3.3",
+    "nyc": "^10.2.0"
   },
-  "dependencies": {
-    "es6-promise": "^3.0.2"
-  }
+  "dependencies": {}
 }
