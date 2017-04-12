@@ -4,6 +4,14 @@ var assert = require('assert');
 var promiseParallel = require('../lib/concurrency');
 
 describe('PromiseParallel', function () {
+    it('should resolve when promise factories are empty', function (done) {
+        var promiseFactories = [];
+        promiseParallel(promiseFactories, 2).then(function (result) {
+            assert.equal(result, undefined);
+            done();
+        }).catch(done);
+    });
+
     it('should execute promises in parallel', function (done) {
         var counter = 0;
         var sequence = [];
@@ -27,14 +35,6 @@ describe('PromiseParallel', function () {
             assert.deepEqual(sequence, [1, 2, 5, 3, 4]);
             done();
         }).catch(done);
-    });
-
-    it('should reject when promiseFactories is empty', function (done) {
-        var promiseFactories = [];
-        promiseParallel(promiseFactories, 2).catch(function (reason) {
-            assert.equal(reason.message, 'promise list is empty.');
-            done();
-        });
     });
 
     it('should stop and reject when some promise fails', function (done) {
