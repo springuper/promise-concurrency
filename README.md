@@ -15,6 +15,8 @@ npm install promise-concurrency
 The most common use case:
 
 ```js
+const promiseConcurrency = require('promise-concurrency')
+
 var promiseFactories = [5, 4, 3, 2, 1].map(function (item) {
     return function () {
         return new Promise(function (resolve, reject) {
